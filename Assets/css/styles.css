@@ -1,3 +1,27 @@
 header div {
     display: inline-block;
 }
+
+li {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    color:black
+}
+
+li:hover {
+    background-color: blueviolet;
+    color: antiquewhite;
+    border: 1px;
+}
+
+h3 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    
+}
+
+p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    color:black
+}

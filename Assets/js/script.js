@@ -20,10 +20,9 @@ function startQuiz() {
         // Stops execution of action at set interval
         clearInterval(timerInterval);
         // Game over, call function to do scores
-        getScoring();
+        showScores();
     }
 
-    formatScreenForQuiz();
     secondsLeft--;
 
     }, 1000);
@@ -31,7 +30,7 @@ function startQuiz() {
 
 startButtonEl.addEventListener("click", function(event) {
     secondsLeft=3;
-    startQuiz();
+    formatScreenForQuiz();
 })
 
 // Function to create and append colorsplosion image
@@ -45,9 +44,49 @@ function getScoring() {
 }
 
 function formatScreenForQuiz() {
+  var startBtn = document.getElementById("startButton");
+  startBtn.remove();
+  showQuestions();
+  startQuiz();
+}
+
+function showScores() {
+  var mainMessageEl = document.getElementById("mainMessage");
+  var mainSubMessageEl = document.getElementById("mainSubMessage");
+  var optionsListEl = document.getElementById("answerOptions");
+  for(var i=0;i<4;i++) {
+    console.log("removing "+i);
+    optionsListEl.children[0].remove();
+  }
+  mainMessageEl.textContent = "Here is the score";
+  mainSubMessageEl.textContent = "You scored 100% - Congratulations!";
+}
+
+function showQuestions (){
+
+  var questionEl = document.getElementById("mainMessage");
+  var descEl = document.getElementById("mainSubMessage");
+  var optionA = document.createElement("li", "class=");
+  var optionB = document.createElement("li");
+  var optionC = document.createElement("li");
+  var optionD = document.createElement("li");
+  var optionsListEl = document.getElementById("answerOptions");
+  questionEl.textContent = "This is question 1";
+  descEl.textContent = "";
+  optionA.textContent = "option 1";
+  optionsListEl.append(optionA);
+  optionB.textContent = "option 2";
+  optionsListEl.append(optionB);
+  optionC.textContent = "option 3";
+  optionsListEl.append(optionC);
+  optionD.textContent = "option 4";
+  optionsListEl.append(optionD);
+  // document.querySelectorAll("li").setAttribute()
+  // document.body.append(document.createElement("div"));
+
 
 }
-// startQuiz();
+
 function init() {
     mainSubEl.textContent = "Try to answer the following code related questions within the time limit.  Keep in mind that the incorrect answers will penalize your scoretime by ten seconds!";
     startButtonEl.textContent = "Start Quiz";
