@@ -1,22 +1,32 @@
-header div {
-    display: inline-block;
+header {
+    display: flex;
+    justify-content: space-between;
 }
 
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
 li {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: large;
-    color:black
+    color:black;
+    padding: 10px;
 }
 
 li:hover {
     background-color: blueviolet;
     color: antiquewhite;
     border: 1px;
+    border-width: 2px;
+    border-radius: 10%;
 }
 
 h3 {
     font-family: 'Courier New', Courier, monospace;
-    font-size: larger;
+    font-size: xx-large;
     
 }
 
