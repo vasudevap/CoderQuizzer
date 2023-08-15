@@ -4,12 +4,9 @@ var timerLabelEl = document.getElementById("timerLabel");
 var startButtonEl = document.getElementById("startButton");
 var mainEl = document.getElementById("mainMessage");
 var mainSubEl = document.getElementById("mainSubMessage");
+var optionsListEl = document.getElementById("answerOptions");
 
 var secondsLeft = 0;
-
-var quizCard = {
-
-}
 
 function startQuiz() {
   // Sets interval in variable
@@ -28,6 +25,9 @@ function startQuiz() {
     }, 1000);
 }
 
+optionsListEl.addEventListener("click", function(event) {
+  console.log(event.target);
+})
 startButtonEl.addEventListener("click", function(event) {
     secondsLeft=3;
     formatScreenForQuiz();
@@ -53,11 +53,10 @@ function formatScreenForQuiz() {
 function showScores() {
   var mainMessageEl = document.getElementById("mainMessage");
   var mainSubMessageEl = document.getElementById("mainSubMessage");
-  var optionsListEl = document.getElementById("answerOptions");
   for(var i=0;i<4;i++) {
     console.log("removing "+i);
     optionsListEl.children[0].remove();
-  }
+  }  
   mainMessageEl.textContent = "Here is the score";
   mainSubMessageEl.textContent = "You scored 100% - Congratulations!";
 }
@@ -66,21 +65,31 @@ function showQuestions (){
 
   var questionEl = document.getElementById("mainMessage");
   var descEl = document.getElementById("mainSubMessage");
-  var optionA = document.createElement("li", "class=");
+  var optionA = document.createElement("li");
   var optionB = document.createElement("li");
   var optionC = document.createElement("li");
   var optionD = document.createElement("li");
-  var optionsListEl = document.getElementById("answerOptions");
+  
   questionEl.textContent = "This is question 1";
+
   descEl.textContent = "";
+
   optionA.textContent = "option 1";
-  optionsListEl.append(optionA);
+  optionA.setAttribute("id","option1");
+  optionsListEl.appendChild(optionA);
+
   optionB.textContent = "option 2";
-  optionsListEl.append(optionB);
+  optionB.setAttribute("id","option2");
+  optionsListEl.appendChild(optionB);
+
   optionC.textContent = "option 3";
-  optionsListEl.append(optionC);
+  optionC.setAttribute("id","option3");
+  optionsListEl.appendChild(optionC);
+
   optionD.textContent = "option 4";
-  optionsListEl.append(optionD);
+  optionD.setAttribute("id","option4");
+  optionsListEl.appendChild(optionD);
+
   // document.querySelectorAll("li").setAttribute()
   // document.body.append(document.createElement("div"));
 
