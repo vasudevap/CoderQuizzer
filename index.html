@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./Assets/css/styles.css" />
     <title>Coder Quizzer</title>
 </head>
 <body>
-    
+    <header>
+        <div id="viewHighScore">
+            <p>View Highscores</p> 
+        </div>
+        <div id="timeCounter">
+            <p id="timerLabel"> <span id="Counter"></span></p>
+        </div>
+    </header>
+    <main id="main">
+        <h3 id="mainMessage">Coding Quiz Challenge</h3>
+        <h4 id="mainSubMessage">Try to answer the following code related questions within the time limit.  Keep in mind that the incorrect answers will penalize your scoretime by ten seconds!</h4>
+        <button id="startButton">Start Quiz</button>
+    </main>
+
+    <script src="./Assets/js/script.js"></script>
+
 </body>
 </html>
