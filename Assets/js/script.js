@@ -1,10 +1,10 @@
 // Selects element by id
 var timeEl = document.getElementById("Counter");
 var timerLabelEl = document.getElementById("timerLabel");
-var startButtonEl = document.getElementById("startButton");
 var mainEl = document.getElementById("mainMessage");
 var mainSubEl = document.getElementById("mainSubMessage");
 var optionsListEl = document.getElementById("answerOptions");
+var startButtonEl = document.getElementById("startButton");
 
 var secondsLeft = 0;
 var correctAnswers = 0;
@@ -14,15 +14,24 @@ var PlayerName = "";
 init();
 
 function init() {
-    
-  var startBtn = document.createElement("button");
-  startBtn.setAttribute("Id","startButton");
-  startBtn.textContent = "Start Quiz";
-
+  if (document.querySelectorAll("button").length>0) {
+    console.log("button already there");
+  } else {
+    console.log("no button present - creating one")
+    var startBtn = document.createElement("button");
+    startBtn.setAttribute("Id","startButton");
+    startBtn.textContent = "Start Quiz";
+    document.getElementById("main").appendChild(startBtn);
+  }
   document.getElementById("mainMessage").textContent="Coding Quiz Challenge";
   document.getElementById("mainSubMessage").textContent="Try to answer the following code related questions within the time limit.  Keep in mind that the incorrect answers will penalize your scoretime by ten seconds!";
-  
+
 }
+
+startButtonEl.addEventListener("click", function(event) {
+  secondsLeft=3;
+  formatScreenForQuiz();
+})
 
 optionsListEl.addEventListener("click", function(event) {
 
@@ -55,12 +64,8 @@ optionsListEl.addEventListener("click", function(event) {
   }
 )
 
-startButtonEl.addEventListener("click", function(event) {
-    secondsLeft=3;
-    formatScreenForQuiz();
-})
 
-// Function to create and append colorsplosion image
+
 function getScoring() {
   timeEl.textContent = " ";
   //   var pEl = document.createElement("p");
