@@ -35,3 +35,11 @@ p {
     font-size: large;
     color:black
 }
+
+#quizFeedback {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: xx-large;
+    color: grey;
+    border-top: 2px;
+    border-color: grey;
+}
