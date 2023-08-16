@@ -1,18 +1,20 @@
 header {
     display: flex;
     justify-content: space-between;
+    align-items: start;
 }
 
 main {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
+    justify-content:flex-start;
+    align-items:center;
 }
+
 li {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: large;
-    color:black;
+    color: black;
     padding: 10px;
 }
 
@@ -27,13 +29,13 @@ li:hover {
 h3 {
     font-family: 'Courier New', Courier, monospace;
     font-size: xx-large;
-    
+
 }
 
 p {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: large;
-    color:black
+    color: black
 }
 
 #quizFeedback {
@@ -47,13 +49,20 @@ p {
 #viewHSLink {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: large;
-    color:black
+    color: black
 }
 
 #viewHSLink:hover {
     background-color: aquamarine;
-    color:brown;
+    color: brown;
     border: 1px;
     border-width: 2px;
     border-radius: 10%;
+}
+
+#inputText {
+    display: flex;
+    flex-flow: row, nowrap;
+    justify-content: space-around;
+    align-items: center;
 }

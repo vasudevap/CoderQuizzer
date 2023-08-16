@@ -5,12 +5,14 @@ var mainEl = document.getElementById("mainMessage");
 var mainSubEl = document.getElementById("mainSubMessage");
 var optionsListEl = document.getElementById("answerOptions");
 var startButtonEl = document.getElementById("startButton");
+var viewHSEl = document.getElementById("viewHSLink");
 
 var secondsLeft = 0;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var PlayerName = "";
 var questionCount = 0;
+var scoresList = [];
 
 init();
 
@@ -28,6 +30,13 @@ function init() {
   document.getElementById("mainSubMessage").textContent = "Try to answer the following code related questions within the time limit.  Keep in mind that the incorrect answers will penalize your scoretime by ten seconds!";
 
 }
+
+viewHSEl.addEventListener ("click", function(event) {
+  alert("click");
+
+})
+
+
 
 startButtonEl.addEventListener("click", function (event) {
   secondsLeft = 30;
@@ -52,7 +61,7 @@ function startQuiz() {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       // Game over, call function to do scores
-      showScores();
+      showAllDonePage();
       timeEl.textContent = "Time Left: 0";
     } else {
       showQuestions();
@@ -153,7 +162,7 @@ optionsListEl.addEventListener("click", function (event) {
     // console.log("correct!" +quizzQuestion[questionCount+5]+" "+optionSelected.getAttribute("id"));
     correctAnswers++;
     if (document.getElementById("quizFeedback")!=null) {
-      document.getElementById("quizFeedback").textContent = "CORRECT!"
+      document.getElementById("quizFeedback").textContent = "CORRECT!";
     } else {
       var feedbackSection = document.createElement("div");
       feedbackSection.setAttribute("id","quizFeedback");
@@ -182,20 +191,64 @@ optionsListEl.addEventListener("click", function (event) {
 }
 )
 
-function showScores() {
+function showAllDonePage() {
   // var mainMessageEl = document.getElementById("mainMessage");
   // var mainSubMessageEl = document.getElementById("mainSubMessage");
 
-  document.getElementById("mainMessage").textContent = "Here is the score";
-  document.getElementById("mainSubMessage").textContent = "You scored " + correctAnswers + " correct and " + wrongAnswers + " wrong";
+  document.getElementById("mainMessage").textContent = "All done!";
+  document.getElementById("mainSubMessage").textContent = "Your final score is " + correctAnswers-wrongAnswers+".";
 
   for (var i = 0; i < 4; i++) {
     // console.log("removing " + i);
     optionsListEl.children[0].remove();
   }
-  // mainMessageEl.textContent = "Here is the score";
-  // mainSubMessageEl.textContent = "You scored " + correctAnswers + " correct and " + wrongAnswers + " wrong";
+
   document.getElementById("quizFeedback").remove();
+
+  var initialsInput = document.createElement("form");
+  initialsInput.setAttribute("id", "inputTextForm");
+  initialsInput.appendChild(document.createElement("label"));
+  initialsInput.children[0].setAttribute("id","initialsInputLabel");
+  initialsInput.children[0].setAttribute("for","initials");
+  initialsInput.children[0].textContent = "Enter Initials:";
+  initialsInput.children[0].setAttribute("style","padding:10px;");
+
+  initialsInput.appendChild(document.createElement("input"));
+  initialsInput.children[1].setAttribute("id","initialsInput");
+  initialsInput.children[1].setAttribute("name","initials");
+  initialsInput.children[1].setAttribute("type","text");
+  initialsInput.children[1].setAttribute("maxlength","20");
+  initialsInput.children[1].setAttribute("size","10");
+  
+  initialsInput.appendChild(document.createElement("button"));
+  initialsInput.children[2].setAttribute("id","initialsInputBtn");
+  initialsInput.children[2].setAttribute("name","initialsInuptBtn");
+  initialsInput.children[2].textContent="Submit";
+  initialsInput.children[2].setAttribute("style","background-color: blueviolet; color: antiquewhite; border 1px; border-width: 2px; border-radius: 10%; margin:10px;");
+
+  
+
+  
+  document.getElementById("main").appendChild(initialsInput);
+  
+
+ 
+
+  // <input type="text" id="name" name="name" required minlength="4" maxlength="8" size="10" />
+  //   <div style="margin-top: 50px;">
+  //         <textarea id="textarea" placeholder="Your input" ></textarea>
+  //         <div>
+            
+  //   // mainMessageEl.textContent = "Here is the score";
+  //   // mainSubMessageEl.textContent = "You scored " + correctAnswers + " correct and " + wrongAnswers + " wrong";
+  //   document.getElementById("quizFeedback").remove();
 
 
 }
+
+// document.getElementById("initialsInputBtn").addEventListener("click", function(){
+//   var initialsInput = document.getElementById("inputTextForm");
+//   scoresList[scoresList.length] = initialsInput.children[1].getAttribute("value");
+//   scoresList[scoresList.length] = wrongAnswers-correctAnswers;
+
+// })
