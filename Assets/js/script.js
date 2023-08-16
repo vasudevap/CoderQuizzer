@@ -16,9 +16,9 @@ init();
 
 function init() {
   if (document.querySelectorAll("button").length > 0) {
-    console.log("button already there");
+    // console.log("button already there");
   } else {
-    console.log("no button present - creating one")
+    // console.log("no button present - creating one")
     var startBtn = document.createElement("button");
     startBtn.setAttribute("Id", "startButton");
     startBtn.textContent = "Start Quiz";
@@ -30,7 +30,7 @@ function init() {
 }
 
 startButtonEl.addEventListener("click", function (event) {
-  secondsLeft = 3;
+  secondsLeft = 30;
   formatScreenForQuiz();
 })
 
@@ -48,16 +48,17 @@ function startQuiz() {
   var timerInterval = setInterval(function () {
     timeEl.textContent = "Time left: " + secondsLeft;
 
-    if (secondsLeft === 0) {
+    if (secondsLeft <= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       // Game over, call function to do scores
       showScores();
+    } else {
+      showQuestions();
+      secondsLeft--;
+      // console.log("Seconds Left:"+secondsLeft);  
     }
-    showQuestions();
-    secondsLeft--;
-    console.log("Seconds Left:"+secondsLeft);
-
+    
   }, 1000);
 }
 
@@ -138,7 +139,7 @@ optionsListEl.addEventListener("click", function (event) {
 
   event.preventDefault();
   var optionSelected = event.target;
-  console.log(optionSelected.textContent);
+  // console.log(optionSelected.textContent);
   // DEBUG:
   // console.log(optionSelected);
 
@@ -147,8 +148,8 @@ optionsListEl.addEventListener("click", function (event) {
   // otherwise, add to wrongAnswers and set
   // secondsLeft - 10 (player loses 10sec)
   //
-  if (quizzQuestion[questionCount + 6] === optionSelected.getAttribute("id")) {
-    console.log("correct!" +quizzQuestion[questionCount+6]+" "+optionSelected.getAttribute("id"));
+  if (quizzQuestion[questionCount + 5] === optionSelected.getAttribute("id")) {
+    // console.log("correct!" +quizzQuestion[questionCount+5]+" "+optionSelected.getAttribute("id"));
     correctAnswers++;
     if (document.getElementById("quizFeedback")!=null) {
       document.getElementById("quizFeedback").textContent = "CORRECT!"
@@ -159,10 +160,11 @@ optionsListEl.addEventListener("click", function (event) {
       document.getElementById("main").appendChild(feedbackSection);
     }
   } else {
-    console.log("wrong!");
+    // console.log("wrong!");
     wrongAnswers++;
+    secondsLeft=secondsLeft-10;
     if (document.querySelector("#quizFeedback")!=null) {
-      document.getElementById("quizFeedback").textContent = "WRONG!"
+      document.getElementById("quizFeedback").textContent = "WRONG!";
     } else {
       var feedbackSection = document.createElement("div");
       feedbackSection.setAttribute("id","quizFeedback");
@@ -171,7 +173,8 @@ optionsListEl.addEventListener("click", function (event) {
     }
   }
   questionCount = questionCount + 6;
-  if (questionCount>quizzQuestion.length) {
+
+  if (questionCount+5>quizzQuestion.length) {
     questionCount = 0;
   }
   showQuestions();
@@ -186,7 +189,7 @@ function showScores() {
   document.getElementById("mainSubMessage").textContent = "You scored " + correctAnswers + " correct and " + wrongAnswers + " wrong";
 
   for (var i = 0; i < 4; i++) {
-    console.log("removing " + i);
+    // console.log("removing " + i);
     optionsListEl.children[0].remove();
   }
   // mainMessageEl.textContent = "Here is the score";
