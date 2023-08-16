@@ -1,7 +1,7 @@
 # CODE QUIZZER
 ## 04 Web APIs: Code Quiz
 
-## Your Task
+## The Task
 
 CODE QUIZZER is a timed coding quiz with multiple-choice questions. 
 

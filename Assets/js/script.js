@@ -53,6 +53,7 @@ function startQuiz() {
       clearInterval(timerInterval);
       // Game over, call function to do scores
       showScores();
+      timeEl.textContent = "Time Left: 0";
     } else {
       showQuestions();
       secondsLeft--;
