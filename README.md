@@ -30,6 +30,16 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
 ```
+## ScreenShot
+![Coder Quizzer application Screenshot](<Coder Quizzer.gif>)
+## URL to Application
+https://github.com/vasudevap/CoderQuizzer.git
+
+## KNOWN Issues
+### Issue 1
+Save scores and initials of user if entered and save in a list of highscores.
+### Issue 2
+View Highscore functionality to see saved highscores when "View Highscore" link is clicked.
 
 
 © 2023 Prashant Vasudeva. Confidential and Proprietary. All Rights Reserved.
